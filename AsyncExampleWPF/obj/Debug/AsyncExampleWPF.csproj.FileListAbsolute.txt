@@ -1,0 +1,15 @@
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\bin\Debug\AsyncExampleWPF.exe.config
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\bin\Debug\AsyncExampleWPF.exe
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\bin\Debug\AsyncExampleWPF.pdb
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.csprojResolveAssemblyReference.cache
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\MainWindow.g.cs
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\App.g.cs
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF_MarkupCompile.cache
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF_MarkupCompile.lref
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\MainWindow.baml
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.g.resources
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.Properties.Resources.resources
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.csproj.GenerateResource.Cache
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.csproj.CoreCompileInputs.cache
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.exe
+D:\Users\Marcos\source\repos\AsyncExampleWPF\AsyncExampleWPF\obj\Debug\AsyncExampleWPF.pdb
