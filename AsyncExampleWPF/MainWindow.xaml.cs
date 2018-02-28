@@ -30,23 +30,44 @@ namespace AsyncExampleWPF
 
         private async void startButton_Click(object sender, RoutedEventArgs e)
         {
-            startButton.IsEnabled = false;
             resultsTextBox.Clear();
+
+            // Disable the button until the operation is complete. 
+            startButton.IsEnabled = false;
+
+            // One-step async call.
             await SumPageSizesAsync();
+
+            //// Two-step async call.  
+            //Task sumTask = SumPageSizesAsync();  
+            //await sumTask; 
+
             resultsTextBox.Text += "\r\nControl returned to startButton_Click.";
+
+            // Reenable the button in case you want to run the operation again. 
             startButton.IsEnabled = true;
         }
 
         private async Task SumPageSizesAsync()
         {
+            // Declare an HttpClient object and increase the buffer size. The  
+            // default buffer size is 65,536.  
+            HttpClient client =
+                new HttpClient() { MaxResponseContentBufferSize = 1000000 };
+
             // Make a list of web addresses.  
             List<string> urlList = SetUpURLList();
 
             var total = 0;
             foreach (var url in urlList)
             {
-                // GetURLContents returns the contents of url as a byte array.  
-                byte[] urlContents = await GetURLContentsAsync(url);
+                // GetByteArrayAsync returns a task. At completion, the task  
+                // produces a byte array.  
+                byte[] urlContents = await client.GetByteArrayAsync(url);
+
+                // The following two lines can replace the previous assignment statement.  
+                //Task<byte[]> getContentsTask = client.GetByteArrayAsync(url);  
+                //byte[] urlContents = await getContentsTask;
 
                 DisplayResults(url, urlContents);
 
@@ -62,46 +83,21 @@ namespace AsyncExampleWPF
         private List<string> SetUpURLList()
         {
             var urls = new List<string>
-    {
-        "http://msdn.microsoft.com/library/windows/apps/br211380.aspx",
-        "http://msdn.microsoft.com",
-        "http://msdn.microsoft.com/library/hh290136.aspx",
-        "http://msdn.microsoft.com/library/ee256749.aspx",
-        "http://msdn.microsoft.com/library/hh290138.aspx",
-        "http://msdn.microsoft.com/library/hh290140.aspx",
-        "http://msdn.microsoft.com/library/dd470362.aspx",
-        "http://msdn.microsoft.com/library/aa578028.aspx",
-        "http://msdn.microsoft.com/library/ms404677.aspx",
-        "http://msdn.microsoft.com/library/ff730837.aspx"
-    };
+            {
+                "http://msdn.microsoft.com/library/windows/apps/br211380.aspx",
+                "http://msdn.microsoft.com",
+                "http://msdn.microsoft.com/library/hh290136.aspx",
+                "http://msdn.microsoft.com/library/ee256749.aspx",
+                "http://msdn.microsoft.com/library/hh290138.aspx",
+                "http://msdn.microsoft.com/library/hh290140.aspx",
+                "http://msdn.microsoft.com/library/dd470362.aspx",
+                "http://msdn.microsoft.com/library/aa578028.aspx",
+                "http://msdn.microsoft.com/library/ms404677.aspx",
+                "http://msdn.microsoft.com/library/ff730837.aspx"
+            };
             return urls;
         }
-
-        private async Task<byte[]> GetURLContentsAsync(string url)
-        {
-            // The downloaded resource ends up in the variable named content.  
-            var content = new MemoryStream();
-
-            // Initialize an HttpWebRequest for the current URL.  
-            var webReq = (HttpWebRequest)WebRequest.Create(url);
-
-            // Send the request to the Internet resource and wait for  
-            // the response.  
-            // Note: you can't use HttpWebRequest.GetResponse in a Windows Store app.  
-            using (WebResponse response = await webReq.GetResponseAsync())
-            {
-                // Get the data stream that is associated with the specified URL.  
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    // Read the bytes in responseStream and copy them to content.    
-                    await responseStream.CopyToAsync(content);
-                }
-            }
-
-            // Return the result as a byte array.  
-            return content.ToArray();
-        }
-
+                
         private void DisplayResults(string url, byte[] content)
         {
             // Display the length of each website. The string format   
